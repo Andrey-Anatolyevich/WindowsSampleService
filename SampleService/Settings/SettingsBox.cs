@@ -16,11 +16,11 @@ namespace SampleService.Settings
             try
             {
                 // Timer delay processor
-                string timerString = keysCollection[Consts.Config.TimerDelay];
+                string timerString = keysCollection["TimerDelay"];
                 this.TimerDelay = timerString.ToTimeSpan(Consts.Config.DelayStringSeparator);
 
                 // Delay after exception
-                string excDelayString = keysCollection[Consts.Config.OnExceptionDelay];
+                string excDelayString = keysCollection["OnExceptionDelay"];
                 this.OnExceptionDelay = excDelayString.ToTimeSpan(Consts.Config.DelayStringSeparator);
 
                 // Other settings variables
