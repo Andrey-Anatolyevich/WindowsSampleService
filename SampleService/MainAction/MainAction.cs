@@ -70,11 +70,12 @@ namespace SampleService
 		///<summary> Timer is elapsed handler </summary>
 		private void Ticker_Elapsed(object sender, ElapsedEventArgs e)
 		{
-			this.Log.Info("Timer is elapsed. Starting work ...");
+			this.Log.Info("Timer is elapsed. Work is STARTED ...");
 			// Stop timer
 			this.Ticker.Stop();
 
 			this.DoJob();
+			this.Log.Info("Work is DONE.");
 
 			// Launch timer again
 			this.Ticker.Start();
@@ -90,7 +91,6 @@ namespace SampleService
              
              
              */
-            this.Log.Info("Work Is DONE.");
 		}
 	}
 }
