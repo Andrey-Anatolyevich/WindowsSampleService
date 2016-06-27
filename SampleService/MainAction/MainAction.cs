@@ -48,8 +48,10 @@ namespace SampleService
 		///<summary> Actual worker method </summary>
 		internal void Act()
 		{
+			this.Log.Info("Initial job launch.");
 			// Do operations on initial start
 			this.DoJob();
+			this.Log.Info("Initial job is done.");
 
 			// Start timer and do work once it's elapsed
 			this.StartTicker();
