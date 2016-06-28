@@ -33,18 +33,18 @@ namespace SampleService
             // initialise logger
 			this.Log = LogManager.GetLogger(this.ServiceName);
 
-			this.Log.Info(string.Format("{0}{0}Launching service {1}...", Environment.NewLine, this.ServiceName));
+			this.Log.Info(string.Format("{0}Launching service {1}...", Environment.NewLine, this.ServiceName));
 
 			try
 			{
-				this.Log.Info(string.Format("Picking settings {0}...", this.ServiceName));
+				this.Log.Info(string.Format("Settings loading for {0}...", this.ServiceName));
 
 				// Here we take sattings form .config file
 				NameValueCollection settingsCollection = ConfigurationManager.AppSettings;
 				// Create new instance of common objects
 				this.Commons = new CommonObjects(settingsCollection);
 
-				this.Log.Info("Settings are picked.");
+				this.Log.Info("Settings are loaded.");
 
 				this.TokenCreator = new CancellationTokenSource();
 				this.WorkerTask = new Task(this.StartAction, this.TokenCreator.Token, TaskCreationOptions.LongRunning);
@@ -52,7 +52,7 @@ namespace SampleService
 			}
 			catch (Exception ex)
 			{
-				this.Log.Error(string.Format("Error while starting service {0}: {1}.", this.ServiceName, ex));
+				this.Log.Error(string.Format("Error on start of service {0}: {1}.", this.ServiceName, ex));
 			}
 		}
 
@@ -71,7 +71,8 @@ namespace SampleService
 			}
 			catch (Exception ex)
 			{
-				this.Log.Error("Exception in main worker method: " + ex);
+				this.Log.Error(string.Format("Exception on stopping service: {0}{1}"
+					, Environment.NewLine, ex));
 			}
 			finally
 			{
