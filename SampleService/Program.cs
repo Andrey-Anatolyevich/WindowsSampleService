@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Configuration.Install;
 using System.Reflection;
 using System.ServiceProcess;
 
@@ -14,6 +15,21 @@ namespace SampleService
             {
                 new MainService()
             };
+            
+            // if .Exe file is started with param "install" or "uninstall", install or uninstall it
+            if (Environment.UserInteractive && args.Length != 0 && (args[0] == "install" || args[0] == "uninstall"))
+            {
+                switch (args[0])
+                {
+                    case "install":
+                        ManagedInstallerClass.InstallHelper(new string[] { Assembly.GetExecutingAssembly().Location });
+                        break;
+                    case "uninstall":
+                        ManagedInstallerClass.InstallHelper(new string[] { "/u", Assembly.GetExecutingAssembly().Location });
+                        break;
+                }
+                return;
+            }
 
             // if launched with single "console" argument, then just launch console app.
             // this way the app is testable as console application 
