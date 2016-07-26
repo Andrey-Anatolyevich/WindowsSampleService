@@ -12,7 +12,7 @@ Steps to launch as console app after compilation:<br/>
 2) In properties of the shortcut add " console" after executable file path.<br/>
 3) Save shortcut changes.<br />
 3) Run the shortcut.<br />
-<br/><br/>
+<br/>
 To install service:<br />
 1) Run compiled .exe file with attribute "install"
 <br/><br/>
