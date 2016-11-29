@@ -86,13 +86,18 @@ namespace SampleService
 		///<summary> Do work </summary>
 		private void DoJob()
 		{
-            /*
-             
-             
-            Here you place all the business logic.
-             
-             
-             */
+			try
+			{
+            		/*
+             		
+            		Here you place all the business logic.
+             		
+             		*/
+			}
+			catch(Exception ex)
+			{
+				this.Log.Error($"Exception encountered in {nameof(DoJob)}:", ex);
+			}			
 		}
 	}
 }
