@@ -3,11 +3,9 @@
 	///<summary> Constants </summary>
 	public static class Consts
 	{
-		public static class Program
-		{
-            /// <summary> [Sample Service] Service title </summary>
-            public const string ServiceName = "Sample Service";
-		}
+		public static string ServiceName = "RitualService";
+		public static string ServiceDescription = "Ritual integration service for Amazon SQS, AmoCRM, Callmart";
+		public static string ServiceDisplayName = "Ritual integration service";
 
 		///<summary> Config keys </summary>
 		public static class Config

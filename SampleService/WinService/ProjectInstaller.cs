@@ -17,7 +17,9 @@ namespace SampleService.WinService
 
 			ServiceInstaller serviceInst;
 			serviceInst = new ServiceInstaller();
-			serviceInst.ServiceName = Consts.Program.ServiceName;
+			serviceInst.ServiceName = Consts.ServiceName;
+			serviceInst.DisplayName = Consts.ServiceDisplayName;
+			serviceInst.Description = Consts.ServiceDescription;
 
 			base.Installers.Add(processInst);
 			base.Installers.Add(serviceInst);

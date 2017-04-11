@@ -4,15 +4,15 @@ using System.Timers;
 
 namespace SampleService
 {
-    /// <summary>
-    /// This class does actual work for MainService
-    /// </summary>
-    internal class MainAction
+	/// <summary>
+	/// This class does actual work for MainService
+	/// </summary>
+	internal class MainAction
 	{
 		///<summary> Constructor </summary>
 		public MainAction(CommonObjects commons)
 		{
-			if (commons == null)
+			if(commons == null)
 				throw new ArgumentNullException(nameof(commons));
 
 
@@ -28,21 +28,21 @@ namespace SampleService
 		private CommonObjects Commons;
 
 		///<summary> Timer for delay after operation is complete </summary>
-        private Timer Ticker
-        {
-            get
-            {
-                if (!this._Ticker_init)
-                {
-                    this._Ticker = new Timer(this.Commons.Settings.TimerDelay.TotalMilliseconds);
+		private Timer Ticker
+		{
+			get
+			{
+				if(!this._Ticker_init)
+				{
+					this._Ticker = new Timer(this.Commons.Settings.TimerDelay.TotalMilliseconds);
 
-                    this._Ticker_init = true;
-                }
-                return this._Ticker;
-            }
-        }
-        private Timer _Ticker;
-        private bool _Ticker_init = false;
+					this._Ticker_init = true;
+				}
+				return this._Ticker;
+			}
+		}
+		private Timer _Ticker;
+		private bool _Ticker_init = false;
 
 
 		///<summary> Actual worker method </summary>
@@ -57,13 +57,13 @@ namespace SampleService
 			this.StartTicker();
 		}
 
-        ///<summary> Start Timer and do work once elapsed </summary>
+		///<summary> Start Timer and do work once elapsed </summary>
 		private void StartTicker()
 		{
-            this.Ticker.AutoReset = false;
-            this.Ticker.Elapsed += Ticker_Elapsed;
+			this.Ticker.AutoReset = false;
+			this.Ticker.Elapsed += Ticker_Elapsed;
 
-            this.Ticker.Start();
+			this.Ticker.Start();
 
 			string delayString = this.Commons.Settings.TimerDelay.ToString(@"hh\:mm\:ss");
 			this.Log.Info(string.Format("Timer is set for {0} and started ...", delayString));
@@ -88,16 +88,16 @@ namespace SampleService
 		{
 			try
 			{
-            		/*
-             		
-            		Here you place all the business logic.
-             		
-             		*/
+				/*
+
+				Here you place all the business logic.
+
+				*/
 			}
 			catch(Exception ex)
 			{
 				this.Log.Error($"Exception encountered in {nameof(DoJob)}:", ex);
-			}			
+			}
 		}
 	}
 }
